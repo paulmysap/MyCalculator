@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>最後3天 Gmail 邮件</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            background: #f5f5f5;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 28px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .content {
+            padding: 20px;
+            max-height: 800px;
+            overflow-y: auto;
+        }
+
+        .email-item {
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .email-item:hover {
+            background: #f0f0f0;
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .email-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+
+        .email-from {
+            font-weight: 600;
+            color: #333;
+            flex: 1;
+        }
+
+        .email-date {
+            font-size: 13px;
+            color: #999;
+            white-space: nowrap;
+            margin-left: 10px;
+        }
+
+        .email-subject {
+            font-size: 14px;
+            color: #667eea;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .email-snippet {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .email-status {
+            display: inline-block;
+            font-size: 11px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-top: 8px;
+        }
+
+        .status-unread {
+            background: #fce4e4;
+            color: #d32f2f;
+        }
+
+        .status-read {
+            background: #e8f5e9;
+            color: #388e3c;
+        }
+
+        .footer {
+            background: #f5f5f5;
+            padding: 15px 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #999;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .emoji {
+            font-size: 20px;
+            margin-right: 8px;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .email-header {
+                flex-direction: column;
+            }
+
+            .email-date {
+                margin-left: 0;
+                margin-top: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><span class="emoji">📧</span>最後3天 Gmail 邮件</h1>
+            <p>你的邮件概览 (2026-07-22 至 2026-07-25)</p>
+        </div>
+
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">20</div>
+                <div class="stat-label">對話</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">201</div>
+                <div class="stat-label">總邮件</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">18</div>
+                <div class="stat-label">未讀</div>
+            </div>
+        </div>
+
+        <div class="content">
+            <!-- 邮件 1 -->
+            <div class="email-item">
+                <div class="email-header">
+                    <div class="email-from">no-reply@accounts.google.com</div>
+                    <div class="email-date">2026-07-25 10:42</div>
+                </div>
+                <div class="email-subject">安全性快訊</div>
+                <div class="email-snippet">Windows 上有新的登入活動 paulshia.ai@gmail.com 我們發現您的 Google 帳戶在 Windows 裝置上有新的登入活動。如果登入帳戶的是您本人，就不需要採取任何動作；如果不是，我們將協助您保護帳戶。</div>
+                <span class="email-status status-unread">🔴 未讀</span>
+            </div>
+
+            <!-- 邮件 2 -->
+            <div class="email-item">
+                <div class="email-header">
+                    <div class="email-from">info@email.meetup.com</div>
+                    <div class="email-date">2026-07-25 06:50</div>
+                </div>
+                <div class="email-subject">📅 Just scheduled: Exploring AI Tools for Online Projects: A Practical Introduction</div>
+                <div class="email-snippet">Washington — AI, Digital Skills & Online Business invites you to a new event</div>
+                <span class="email-status status-unread">🔴 未讀</span>
+            </div>
+
+            <!-- 邮件 3 -->
+            <div class="email-item">
+                <div class="email-header">
+                    <div class="email-from">info@email.meetup.com</div>
+                    <div class="email-date">2026-07-25 06:17</div>
+                </div>
+                <div class="email-subject">📅 Just scheduled: How Mindset and AI Can Support Your Online Business Journey</div>
+                <div class="email-snippet">Washington — AI, Digital Skills & Online Business invites you to a new event</div>
+                <span class="email-status status-unread">🔴 未讀</span>
+            </div>
+
+            <!-- 邮件 4 -->
+            <div class="email-item">
+                <div class="email-header">
+                    <div class="email-from">info@email.meetup.com</div>
+                    <div class="email-date">2026-07-25 06:01</div>
+                </div>
+                <div class="email-subject">📅 Just scheduled: Exploring Print-on-Demand with AI: A Practical Introduction</div>
+                <div class="email-snippet">Washington — AI, Digital Skills & Online Business invites you to a new event</div>
+                <span class="email-status status-unread">🔴 未讀</span>
+            </div>
+
+            <!-- 邮件 5 -->
+            <div class="email-item">
+                <div class="email-header">
+                    <div class="email-from">info@newsletter.shopee.tw</div>
+                    <div class="email-date">2026-07-25 04:02</div>
+                </div>
+                <div class="email-subject">今日狂灑全站５０元優惠券⭐手刀搶</div>
+                <div class="email-snippet">蝦皮會員: 銅蝦 再 $6000 和 6 筆訂單升級銀蝦 限時特賣推薦商品...</div>
+                <span class="email-status status-unread">🔴 未讀</span>
+            </div>
+
+            <!-- 邮件 6 -->
+            <div class="email-item">
+                <div class="email-header">
+                    <div class="email-from">info@email.meetup.com</div>
+                    <div class="email-date">2026-07-25 00:01</div>
+                </div>
+                <div class="email-subject">📅 Just scheduled: Check-Ins / Coworking Session</div>
+                <div class="email-snippet">Goal-Getters' Coworking Group invites you to a new event</div>
+                <span class="email-status status-unread">🔴 未讀</span>
+            </div>
+
+            <!-- 邮件 7 -->
+            <div class="email-item">
+                <div class="email-header">
+                    <div class="email-from">info@meetup.com</div>
+                    <div class="email-date">2026-07-24 23:24</div>
+                </div>
+                <div class="email-subject">Ashley posted in Chill & Skill - Learn New Skills in a Chill Way</div>
+                <div class="email-snippet">Ashley started a discussion about Remote Data Entry role with flexible part-time and full-time schedules...</div>
+                <span class="email-status status-unread">🔴 未讀</span>
+            </div>
+
+            <!-- 邮件 8 -->
+            <div class="email-item">
+                <div class="email-header">
+                    <div class="email-from">info@meetup.com</div>
+                    <div class="email-date">2026-07-24 19:28</div>
+                </div>
+                <div class="email-subject">💬 New comments posted on an event</div>
+                <div class="email-snippet">1 new comments posted in Building AI Workflow Skills (By QurioSkill). Keith: I'm giving away my 2021 MacBook Pro...</div>
+                <span class="email-status status-unread">🔴 未讀</span>
+            </div>
+
+            <!-- 邮件 9 -->
+            <div class="email-item">
+                <div class="email-header">
+                    <div class="email-from">info@meetup.com</div>
+                    <div class="email-date">2026-07-24 19:23</div>
+                </div>
+                <div class="email-subject">How I Built a Second Income With AI in 90 Days</div>
+                <div class="email-snippet">Zahid Muhammad sent you a message. STARTING IN 41 MINUTES - How I Built a Second Income With AI in 90 Days...</div>
+                <span class="email-status status-unread">🔴 未讀</span>
+            </div>
+
+            <!-- 邮件 10 -->
+            <div class="email-item">
+                <div class="email-header">
+                    <div class="email-from">info@meetup.com</div>
+                    <div class="email-date">2026-07-24 16:32</div>
+                </div>
+                <div class="email-subject">Looking for Guest Speaker</div>
+                <div class="email-snippet">Scott Schindler sent you a message. I am going to start reaching out periodically, seeing if any of you have connections for guest speakers...</div>
+                <span class="email-status status-unread">🔴 未讀</span>
+            </div>
+
+            <!-- 邮件 11 -->
+            <div class="email-item">
+                <div class="email-header">
+                    <div class="email-from">info@meetup.com</div>
+                    <div class="email-date">2026-07-24 16:25</div>
+                </div>
+                <div class="email-subject">AI Governance tonight!</div>
+                <div class="email-snippet">Scott Schindler sent you a message. Happy Friday everyone, I wanted to share with you the class link for tonight's AI Governance for Developers course...</div>
+                <span class="email-status status-unread">🔴 未讀</span>
+            </div>
+
+            <!-- 邮件 12 -->
+            <div class="email-item">
+                <div class="email-header">
+                    <div class="email-from">info@newsletter.shopee.tw</div>
+                    <div class="email-date">2026-07-24 12:43</div>
+                </div>
+                <div class="email-subject">paulshia.ai 🎉恭喜您獲得「訂閱戶優惠券」、「２張免運券」領取機會！</div>
+                <div class="email-snippet">立即領券下單更划算，爸氣優惠開搶中，寵爸好禮7折起...</div>
+                <span class="email-status status-unread">🔴 未讀</span>
+            </div>
+
+            <!-- 邮件 13 -->
+            <div class="email-item">
+                <div class="email-header">
+                    <div class="email-from">info@email.meetup.com</div>
+                    <div class="email-date">2026-07-24 12:42</div>
+                </div>
+                <div class="email-subject">🎉 New members joined International conference of AI</div>
+                <div class="email-snippet">1 new members joined your Meetup group. You now have 19 members! Abao...</div>
+                <span class="email-status status-unread">🔴 未讀</span>
+            </div>
+
+            <!-- 邮件 14 -->
+            <div class="email-item">
+                <div class="email-header">
+                    <div class="email-from">email@t.godaddy.com</div>
+                    <div class="email-date">2026-07-24 12:05</div>
+                </div>
+                <div class="email-subject">您的行銷活動電子郵件已寄出。</div>
+                <div class="email-snippet">好消息，我們已在剛才將您的 email 行銷活動全數寄出。您可以在帳戶內追蹤行銷活動的成效了。</div>
+                <span class="email-status status-unread">🔴 未讀</span>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>📊 資料更新時間: 2026-07-25 | 總共顯示 14/20 個對話 | 向下滾動查看更多邮件</p>
+        </div>
+    </div>
+</body>
+</html>
